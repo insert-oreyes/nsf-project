@@ -1,0 +1,60 @@
+.join{
+    display: flex;
+    padding: 0 2rem;
+    gap: 10rem;
+}
+
+.join-left{
+    color: white;
+    font-size: 3rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    position: relative;
+}
+
+.join-left>div{
+    display: flex;
+    gap: 1rem;
+}
+
+.join-left>hr{
+    position: absolute;
+    width: 10.5rem;
+    border: 2px solid var(--blue);
+    margin: -10px 0;
+    border-radius: 20%;
+    -webkit-border-radius: 20%;
+    -moz-border-radius: 20%;
+    -ms-border-radius: 20%;
+    -o-border-radius: 20%;
+}
+
+.join-right{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    
+}
+
+.email-container{
+    display: flex;
+    padding: 1rem 2rem;
+    gap: 3rem;
+    background-color: var(--caloryCard);
+}
+
+.email-container>input{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: var(--lightgray);
+}
+
+::placeholder{
+    color: var(--lightgray)
+}
+
+.join-btn{
+    background-color: var(--blue);
+    color: white;
+}
