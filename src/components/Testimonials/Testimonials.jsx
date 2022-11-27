@@ -3,19 +3,20 @@ import './Testimonials.css'
 import { testimonialsData } from '../../data/testimonialsData'
 import leftArrow from '../../assets/leftArrow.png'
 import rightArrow from '../../assets/rightArrow.png'
+import { motion } from 'framer-motion'
 
 const Testimonials = () => {
+  const transition = { type: 'spring', duration: 3 }
   const [selected, setSelected] = useState(0)
   const tLength = testimonialsData.length
 
-  function handleClickLeft() {
+  const handleClickLeft = () => {
     selected === 0 ? setSelected(tLength - 1) : setSelected((prev) => prev - 1)
   }
 
-  function handleClickRight() {
+  const handleClickRight = () => {
     selected === tLength - 1 ? setSelected(0) : setSelected((prev) => prev + 1)
   }
-
 
   return (
     <div className='testimonials'>
@@ -23,7 +24,15 @@ const Testimonials = () => {
         <span>Testimonials</span>
         <span className='stroke-text'>What they</span>
         <span>say about me</span>
-        <span>{testimonialsData[selected].review}</span>
+        <motion.span
+          key={selected}
+          initial={{ opacity: 0, x: 100 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -100 }}
+          transition={transition}
+        >
+          {testimonialsData[selected].review}
+        </motion.span>
         <span>
           <span>{testimonialsData[selected].name}</span>
           {' - '}
@@ -31,9 +40,25 @@ const Testimonials = () => {
         </span>
       </div>
       <div className='testimonials-right'>
-        <div></div>
-        <div></div>
-        <img src={testimonialsData[selected].image} alt='' />
+        <motion.div
+          initial={{ opacity: 0, x: -100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ ...transition, duration: 2 }}
+        />
+        <motion.div
+          initial={{ opacity: 0, x: 100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ ...transition, duration: 2 }}
+        />
+        <motion.img
+          key={selected}
+          src={testimonialsData[selected].image}
+          alt=''
+          initial={{ opacity: 0, x: 100 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -100 }}
+          transition={transition}
+        />
         <div className='arrows'>
           <img src={leftArrow} onClick={handleClickLeft} alt='' />
           <img src={rightArrow} onClick={handleClickRight} alt='' />

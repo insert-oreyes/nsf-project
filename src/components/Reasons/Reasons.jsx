@@ -15,12 +15,12 @@ const Reasons = () => {
     'Over 140 experts and coachs',
     'Over 140 experts and coachs',
     'Over 140 experts and coachs',
-    'Over 140 experts and coachs',
+    'Over 140 experts and coachs'
   ]
   const partnersBrands = [brand1, brand2, brand3]
 
   return (
-    <div className='reasons' id='reasons'>
+    <div className='reasons' id='why me'>
       <div className='reasons-left'>
         {images.map((image, index) => {
           return <img key={index} src={image} alt='' />
@@ -35,8 +35,8 @@ const Reasons = () => {
         <div className='reasons-details'>
           {reasonsData.map((data) => {
             return (
-              <div>
-                <img src={tick} alt=''></img>
+              <div key=''>
+                <img src={tick} alt='' />
                 <span>{data}</span>
               </div>
             )
@@ -46,7 +46,7 @@ const Reasons = () => {
         <span className='partners-title'>Our partners</span>
         <div className='partners'>
           {partnersBrands.map((brands) => {
-            return <img src={brands} alt='' />
+            return <img key='' src={brands} alt='' />
           })}
         </div>
       </div>

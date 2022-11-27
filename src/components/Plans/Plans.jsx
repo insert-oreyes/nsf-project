@@ -2,12 +2,14 @@ import React from 'react'
 import { plansData } from '../../data/plansData'
 import whiteTick from '../../assets/whiteTick.png'
 import './Plans.css'
+import { motion } from 'framer-motion'
 
 const Plans = () => {
   return (
     <div className='plans-container'>
-      <div className='blur plans-blur-1'></div>
-      <div className='blur plans-blur-2'></div>
+      <div className='blur plans-blur-1' />
+      <div className='blur plans-blur-2' />
+      {/* header */}
       <div className='programs-header'>
         <span className='stroke-text'>Get ready to</span>
         <span>start your journey</span>
@@ -17,7 +19,12 @@ const Plans = () => {
       <div className='plans'>
         {plansData.map((plan, i) => {
           return (
-            <div className='plan' key={i}>
+            <motion.div
+              className='plan'
+              key={i}
+              whileHover={{ scale: 1.2 }}
+              whileTap={{ scale: 0.8 }}
+            >
               {plan.icon}
               <span>{plan.name}</span>
               <span>€ {plan.price}</span>
@@ -25,7 +32,7 @@ const Plans = () => {
               <div className='features'>
                 {plan.features.map((features, i) => {
                   return (
-                    <div className='feature'>
+                    <div key={i} className='feature'>
                       <img src={whiteTick} alt='' />
                       <span key={i}>{features}</span>
                     </div>
@@ -33,10 +40,10 @@ const Plans = () => {
                 })}
               </div>
               <div>
-                <span>See more information --> </span>
+                <span>See more information </span>
               </div>
               <button className='btn'>Join now</button>
-            </div>
+            </motion.div>
           )
         })}
       </div>
